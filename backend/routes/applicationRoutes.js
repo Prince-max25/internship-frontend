@@ -4,6 +4,7 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const os = require("os");
 
 const { pool } = require("../config/db");
 
@@ -11,18 +12,35 @@ const { pool } = require("../config/db");
 // =========================================
 // UPLOAD DIRECTORY
 // =========================================
+// On Vercel, the deployed code directory (/var/task/...)
+// is READ-ONLY. Only os.tmpdir() (mapped to /tmp) is
+// writable, and even that is wiped between invocations,
+// so uploaded files won't persist reliably there either.
+//
+// This keeps local dev working exactly as before, while
+// preventing the whole app from crashing on Vercel. Real
+// file persistence in production still needs a proper fix
+// (e.g. uploading to Cloudinary / Supabase Storage / S3
+// instead of local disk) — this is a stopgap, not that fix.
 
-const uploadDirectory = path.join(
-  __dirname,
-  "..",
-  "uploads",
-  "applications"
-);
+const uploadDirectory = process.env.VERCEL
+  ? path.join(os.tmpdir(), "uploads", "applications")
+  : path.join(__dirname, "..", "uploads", "applications");
 
-if (!fs.existsSync(uploadDirectory)) {
-  fs.mkdirSync(uploadDirectory, {
-    recursive: true,
-  });
+try {
+  if (!fs.existsSync(uploadDirectory)) {
+    fs.mkdirSync(uploadDirectory, {
+      recursive: true,
+    });
+  }
+} catch (error) {
+  console.error(
+    "Could not create upload directory. File uploads will fail until this is resolved:",
+    error.message
+  );
+  // Deliberately not re-throwing: letting this fail silently
+  // at startup means the rest of the API (auth, dashboard,
+  // profile, etc.) keeps working even though uploads won't.
 }
 
 
