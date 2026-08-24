@@ -818,7 +818,7 @@ function AdminReports() {
 
           {/* STATUS */}
 
-          <div className="report-card status-card">
+          <div className="report-cardstatus-card">
 
             <div className="report-card-header">
 

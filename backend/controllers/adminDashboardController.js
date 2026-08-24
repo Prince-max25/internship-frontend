@@ -44,19 +44,19 @@ const getDashboardStats = async (req, res) => {
     // Applications by department
     const [departmentResult] = await pool.query(`
       SELECT
-        d.name AS department,
-        COUNT(a.id) AS total
+        d.name AS department_name,
+        COUNT(a.id) AS application_count
       FROM applications a
       LEFT JOIN departments d
         ON a.department_id = d.id
       GROUP BY d.id, d.name
-      ORDER BY total DESC
+      ORDER BY application_count DESC
     `);
 
     // Recent applications
     const [recentResult] = await pool.query(`
       SELECT
-        a.id AS application_id,
+        a.id AS id,
         a.application_status,
         a.submitted_at,
 
@@ -64,7 +64,7 @@ const getDashboardStats = async (req, res) => {
         s.email,
         s.program,
 
-        d.name AS department
+        d.name AS department_name
 
       FROM applications a
 
@@ -79,7 +79,7 @@ const getDashboardStats = async (req, res) => {
     `);
 
     res.json({
-      stats: {
+      statistics: {
         totalApplicants: totalResult[0].total,
         pendingApplications: pendingResult[0].total,
         approvedApplications: approvedResult[0].total,
@@ -87,7 +87,7 @@ const getDashboardStats = async (req, res) => {
         underReviewApplications: reviewResult[0].total,
       },
 
-      departments: departmentResult,
+      departmentDistribution: departmentResult,
 
       recentApplications: recentResult,
     });

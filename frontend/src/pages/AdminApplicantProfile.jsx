@@ -9,74 +9,147 @@ function AdminApplicantProfile() {
   const [applicant, setApplicant] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [updatingStatus, setUpdatingStatus] = useState(false);
 
   const API_URL = "http://localhost:5000";
 
-  // =========================================
+  // =========================================================
   // LOAD APPLICANT
-  // =========================================
+  // =========================================================
+
+  const fetchApplicant = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const response = await fetch(
+        `${API_URL}/api/admin/applicants/${id}`
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Unable to load applicant."
+        );
+      }
+
+      setApplicant(data.applicant);
+    } catch (error) {
+      console.error("Applicant profile error:", error);
+
+      setError(
+        error.message || "Unable to load applicant."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchApplicant = async () => {
-      try {
-        setLoading(true);
-        setError("");
-
-        const response = await fetch(
-          `${API_URL}/api/admin/applicant/${id}`
-        );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(
-            data.message ||
-              "Unable to load applicant."
-          );
-        }
-
-        setApplicant(data.applicant);
-
-      } catch (error) {
-        console.error(
-          "Applicant profile error:",
-          error
-        );
-
-        setError(
-          error.message ||
-            "Unable to load applicant."
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchApplicant();
   }, [id]);
 
-  // =========================================
+  // =========================================================
+  // UPDATE APPLICATION STATUS
+  // =========================================================
+
+  const updateStatus = async (newStatus) => {
+    if (!applicant || updatingStatus) {
+      return;
+    }
+
+    const statusName =
+      newStatus === "approved"
+        ? "Approve"
+        : newStatus === "rejected"
+        ? "Reject"
+        : "move to Under Review";
+
+    const confirmed = window.confirm(
+      `Are you sure you want to ${statusName} this application?`
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      setUpdatingStatus(true);
+
+      const response = await fetch(
+        `${API_URL}/api/admin/applicants/${id}/status`,
+        {
+          method: "PUT",
+
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify({
+            status: newStatus,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message ||
+            "Unable to update application status."
+        );
+      }
+
+      // Update the applicant on the page immediately
+      setApplicant((previousApplicant) => ({
+        ...previousApplicant,
+        application_status: newStatus,
+        updated_at: new Date().toISOString(),
+      }));
+
+      alert(
+        data.message ||
+          `Application ${newStatus} successfully.`
+      );
+    } catch (error) {
+      console.error(
+        "Update applicant status error:",
+        error
+      );
+
+      alert(
+        error.message ||
+          "Unable to update application status."
+      );
+    } finally {
+      setUpdatingStatus(false);
+    }
+  };
+
+  // =========================================================
   // FORMAT DATE
-  // =========================================
+  // =========================================================
 
   const formatDate = (date) => {
     if (!date) {
       return "Not provided";
     }
 
-    return new Date(date).toLocaleDateString(
-      "en-GB",
-      {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      }
-    );
+    const formattedDate = new Date(
+      date
+    ).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+
+    return formattedDate;
   };
 
-  // =========================================
-  // STATUS
-  // =========================================
+  // =========================================================
+  // GET STATUS
+  // =========================================================
 
   const getStatus = () => {
     if (!applicant?.application_status) {
@@ -93,9 +166,22 @@ function AdminApplicantProfile() {
       .join(" ");
   };
 
-  // =========================================
+  // =========================================================
+  // STATUS CLASS
+  // =========================================================
+
+  const getStatusClass = () => {
+    const status =
+      applicant?.application_status
+        ?.toLowerCase()
+        .replace(/\s+/g, "-");
+
+    return status || "pending";
+  };
+
+  // =========================================================
   // INITIALS
-  // =========================================
+  // =========================================================
 
   const getInitials = (name) => {
     if (!name) {
@@ -111,9 +197,9 @@ function AdminApplicantProfile() {
       .toUpperCase();
   };
 
-  // =========================================
+  // =========================================================
   // LOADING
-  // =========================================
+  // =========================================================
 
   if (loading) {
     return (
@@ -130,7 +216,7 @@ function AdminApplicantProfile() {
 
         <main className="admin-main">
 
-          <div style={{ padding: "40px" }}>
+          <div className="profile-loading">
             Loading applicant...
           </div>
 
@@ -140,9 +226,9 @@ function AdminApplicantProfile() {
     );
   }
 
-  // =========================================
+  // =========================================================
   // ERROR
-  // =========================================
+  // =========================================================
 
   if (error) {
     return (
@@ -183,12 +269,8 @@ function AdminApplicantProfile() {
 
         <main className="admin-main">
 
-          <div
-            style={{
-              padding: "40px",
-              color: "#dc2626",
-            }}
-          >
+          <div className="profile-error">
+
             <h2>
               Unable to load applicant
             </h2>
@@ -200,6 +282,7 @@ function AdminApplicantProfile() {
             <Link to="/admin/applicants">
               ← Back to Applicants
             </Link>
+
           </div>
 
         </main>
@@ -208,12 +291,16 @@ function AdminApplicantProfile() {
     );
   }
 
+  // =========================================================
+  // MAIN PAGE
+  // =========================================================
+
   return (
     <div className="admin-dashboard">
 
-      {/* =========================================
+      {/* =====================================================
           SIDEBAR
-      ========================================= */}
+      ===================================================== */}
 
       <aside className="admin-sidebar">
 
@@ -281,11 +368,15 @@ function AdminApplicantProfile() {
       </aside>
 
 
-      {/* =========================================
-          MAIN
-      ========================================= */}
+      {/* =====================================================
+          MAIN CONTENT
+      ===================================================== */}
 
       <main className="admin-main">
+
+        {/* ===================================================
+            HEADER
+        =================================================== */}
 
         <header className="admin-header">
 
@@ -293,17 +384,12 @@ function AdminApplicantProfile() {
 
             <Link
               to="/admin/applicants"
-              style={{
-                textDecoration: "none",
-                color: "#2563eb",
-                fontSize: "14px",
-                fontWeight: "600",
-              }}
+              className="back-applicants"
             >
               ← Back to Applicants
             </Link>
 
-            <h1 style={{ marginTop: "10px" }}>
+            <h1>
               Applicant Profile
             </h1>
 
@@ -316,7 +402,10 @@ function AdminApplicantProfile() {
 
           <div className="admin-header-right">
 
-            <button className="admin-notification">
+            <button
+              className="admin-notification"
+              type="button"
+            >
               ♢
               <span></span>
             </button>
@@ -328,6 +417,7 @@ function AdminApplicantProfile() {
               </div>
 
               <div>
+
                 <strong>
                   Administrator
                 </strong>
@@ -335,6 +425,7 @@ function AdminApplicantProfile() {
                 <small>
                   System Admin
                 </small>
+
               </div>
 
             </div>
@@ -344,28 +435,15 @@ function AdminApplicantProfile() {
         </header>
 
 
-        {/* =========================================
-            APPLICANT HEADER
-        ========================================= */}
+        {/* ===================================================
+            APPLICANT PROFILE HEADER
+        =================================================== */}
 
-        <section className="admin-panel">
+        <section className="applicant-profile-card">
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "20px",
-            }}
-          >
+          <div className="profile-main-info">
 
-            <div
-              className="applicant-avatar"
-              style={{
-                width: "70px",
-                height: "70px",
-                fontSize: "22px",
-              }}
-            >
+            <div className="large-profile-avatar">
               {getInitials(
                 applicant.full_name
               )}
@@ -373,424 +451,775 @@ function AdminApplicantProfile() {
 
             <div>
 
-              <h2>
-                {applicant.full_name}
-              </h2>
+              <div className="profile-name-row">
 
-              <p>
-                {applicant.email}
-              </p>
+                <h2>
+                  {applicant.full_name}
+                </h2>
 
-              <span
-                className={`applicant-status ${getStatus()
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")}`}
-              >
-                {getStatus()}
-              </span>
+                <span
+                  className={`profile-status ${getStatusClass()}`}
+                >
+                  {getStatus()}
+                </span>
 
-            </div>
+              </div>
 
-          </div>
-
-        </section>
-
-
-        {/* =========================================
-            PERSONAL INFORMATION
-        ========================================= */}
-
-        <section className="admin-panel">
-
-          <div className="admin-panel-header">
-
-            <div>
-              <h2>
-                Personal Information
-              </h2>
-
-              <p>
-                Applicant's personal details.
-              </p>
-            </div>
-
-          </div>
-
-          <div
-            className="dashboard-application-summary"
-          >
-
-            <div>
-              <span>
-                Full Name
-              </span>
-
-              <strong>
-                {applicant.full_name ||
-                  "Not provided"}
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                Email
-              </span>
-
-              <strong>
+              <p className="profile-email">
                 {applicant.email ||
-                  "Not provided"}
-              </strong>
+                  "No email provided"}
+              </p>
+
+              <div className="profile-meta">
+
+                <span>
+                  {applicant.university ||
+                    "University not provided"}
+                </span>
+
+                <span>
+                  {applicant.program ||
+                    "Programme not provided"}
+                </span>
+
+                <span>
+                  {applicant.department_name ||
+                    "Department not assigned"}
+                </span>
+
+              </div>
+
             </div>
 
-            <div>
-              <span>
-                Phone
-              </span>
+          </div>
 
-              <strong>
-                {applicant.phone ||
-                  "Not provided"}
-              </strong>
-            </div>
+          <div className="profile-id">
 
-            <div>
-              <span>
-                Student ID
-              </span>
+            <span>
+              Application ID
+            </span>
 
-              <strong>
-                {applicant.student_number ||
-                  "Not provided"}
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                Date of Birth
-              </span>
-
-              <strong>
-                {formatDate(
-                  applicant.date_of_birth
-                )}
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                Gender
-              </span>
-
-              <strong>
-                {applicant.gender ||
-                  "Not provided"}
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                Address
-              </span>
-
-              <strong>
-                {applicant.address ||
-                  "Not provided"}
-              </strong>
-            </div>
+            <strong>
+              #{applicant.application_id}
+            </strong>
 
           </div>
 
         </section>
 
 
-        {/* =========================================
-            ACADEMIC INFORMATION
-        ========================================= */}
+        {/* ===================================================
+            TWO COLUMN CONTENT
+        =================================================== */}
 
-        <section className="admin-panel">
+        <div className="profile-content-grid">
 
-          <div className="admin-panel-header">
+          {/* =================================================
+              LEFT COLUMN
+          ================================================= */}
 
-            <div>
+          <div className="profile-left-column">
+
+
+            {/* ===============================================
+                PERSONAL INFORMATION
+            =============================================== */}
+
+            <section className="profile-section">
+
+              <div className="profile-section-header">
+
+                <h2>
+                  Personal Information
+                </h2>
+
+                <p>
+                  Applicant's personal details.
+                </p>
+
+              </div>
+
+              <div className="profile-info-grid">
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Full Name
+                  </span>
+
+                  <strong>
+                    {applicant.full_name ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Email
+                  </span>
+
+                  <strong>
+                    {applicant.email ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Phone
+                  </span>
+
+                  <strong>
+                    {applicant.phone ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Student ID
+                  </span>
+
+                  <strong>
+                    {applicant.student_number ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Date of Birth
+                  </span>
+
+                  <strong>
+                    {formatDate(
+                      applicant.date_of_birth
+                    )}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Gender
+                  </span>
+
+                  <strong>
+                    {applicant.gender ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item full-width">
+
+                  <span>
+                    Address
+                  </span>
+
+                  <strong>
+                    {applicant.address ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            {/* ===============================================
+                ACADEMIC INFORMATION
+            =============================================== */}
+
+            <section className="profile-section">
+
+              <div className="profile-section-header">
+
+                <h2>
+                  Academic Information
+                </h2>
+
+                <p>
+                  Applicant's academic background.
+                </p>
+
+              </div>
+
+              <div className="profile-info-grid">
+
+                <div className="profile-info-item">
+
+                  <span>
+                    University
+                  </span>
+
+                  <strong>
+                    {applicant.university ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Programme
+                  </span>
+
+                  <strong>
+                    {applicant.program ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Level
+                  </span>
+
+                  <strong>
+                    {applicant.level ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    GPA
+                  </span>
+
+                  <strong>
+                    {applicant.gpa ||
+                      "Not provided"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Expected Graduation
+                  </span>
+
+                  <strong>
+                    {formatDate(
+                      applicant.expected_graduation
+                    )}
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            {/* ===============================================
+                INTERNSHIP APPLICATION
+            =============================================== */}
+
+            <section className="profile-section">
+
+              <div className="profile-section-header">
+
+                <h2>
+                  Internship Application
+                </h2>
+
+                <p>
+                  Details of the applicant's
+                  internship request.
+                </p>
+
+              </div>
+
+              <div className="profile-info-grid">
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Department
+                  </span>
+
+                  <strong>
+                    {applicant.department_name ||
+                      "Not specified"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Preferred Location
+                  </span>
+
+                  <strong>
+                    {applicant.preferred_location ||
+                      "Not specified"}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Start Date
+                  </span>
+
+                  <strong>
+                    {formatDate(
+                      applicant.start_date
+                    )}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    End Date
+                  </span>
+
+                  <strong>
+                    {formatDate(
+                      applicant.end_date
+                    )}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Submitted
+                  </span>
+
+                  <strong>
+                    {formatDate(
+                      applicant.submitted_at
+                    )}
+                  </strong>
+
+                </div>
+
+
+                <div className="profile-info-item">
+
+                  <span>
+                    Current Status
+                  </span>
+
+                  <strong>
+                    {getStatus()}
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            {/* ===============================================
+                MOTIVATION
+            =============================================== */}
+
+            <section className="profile-section">
+
+              <div className="profile-section-header">
+
+                <h2>
+                  Motivation
+                </h2>
+
+                <p>
+                  Applicant's internship motivation.
+                </p>
+
+              </div>
+
+              <p
+                style={{
+                  lineHeight: "1.8",
+                  color: "#64748b",
+                  whiteSpace: "pre-wrap",
+                  fontSize: "12px",
+                  margin: 0,
+                }}
+              >
+                {applicant.motivation ||
+                  "No motivation provided."}
+              </p>
+
+            </section>
+
+
+            {/* ===============================================
+                DOCUMENTS
+            =============================================== */}
+
+            <section className="profile-section">
+
+              <div className="profile-section-header">
+
+                <h2>
+                  Documents
+                </h2>
+
+                <p>
+                  Documents submitted by the applicant.
+                </p>
+
+              </div>
+
+              <div className="documents-list">
+
+                {/* CV */}
+
+                <div className="document-item">
+
+                  <div className="document-icon">
+                    CV
+                  </div>
+
+                  <div className="document-info">
+
+                    <strong>
+                      Curriculum Vitae
+                    </strong>
+
+                    <span>
+                      {applicant.cv_path
+                        ? "Document uploaded"
+                        : "Not uploaded"}
+                    </span>
+
+                  </div>
+
+                  {applicant.cv_path && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        window.open(
+                          `${API_URL}/${applicant.cv_path}`,
+                          "_blank"
+                        )
+                      }
+                    >
+                      View
+                    </button>
+                  )}
+
+                </div>
+
+
+                {/* TRANSCRIPT */}
+
+                <div className="document-item">
+
+                  <div className="document-icon">
+                    PDF
+                  </div>
+
+                  <div className="document-info">
+
+                    <strong>
+                      Academic Transcript
+                    </strong>
+
+                    <span>
+                      {applicant.transcript_path
+                        ? "Document uploaded"
+                        : "Not uploaded"}
+                    </span>
+
+                  </div>
+
+                  {applicant.transcript_path && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        window.open(
+                          `${API_URL}/${applicant.transcript_path}`,
+                          "_blank"
+                        )
+                      }
+                    >
+                      View
+                    </button>
+                  )}
+
+                </div>
+
+
+                {/* COVER LETTER */}
+
+                <div className="document-item">
+
+                  <div className="document-icon">
+                    DOC
+                  </div>
+
+                  <div className="document-info">
+
+                    <strong>
+                      Cover Letter
+                    </strong>
+
+                    <span>
+                      {applicant.cover_letter
+                        ? "Document uploaded"
+                        : "Not uploaded"}
+                    </span>
+
+                  </div>
+
+                  {applicant.cover_letter && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        window.open(
+                          `${API_URL}/${applicant.cover_letter}`,
+                          "_blank"
+                        )
+                      }
+                    >
+                      View
+                    </button>
+                  )}
+
+                </div>
+
+              </div>
+
+            </section>
+
+          </div>
+
+
+          {/* =================================================
+              RIGHT COLUMN
+          ================================================= */}
+
+          <div className="profile-right-column">
+
+
+            {/* ===============================================
+                APPLICATION ACTIONS
+            =============================================== */}
+
+            <section className="profile-action-card">
 
               <h2>
-                Academic Information
+                Application Decision
               </h2>
 
               <p>
-                Applicant's academic background.
+                Review this application and
+                update its current status.
               </p>
 
-            </div>
 
-          </div>
+              {/* CURRENT STATUS */}
 
-          <div
-            className="dashboard-application-summary"
-          >
+              <div
+                className={`current-status ${getStatusClass()}`}
+              >
 
-            <div>
-              <span>
-                University
-              </span>
+                <div className="status-dot"></div>
 
-              <strong>
-                {applicant.university ||
-                  "Not provided"}
-              </strong>
-            </div>
+                <div>
 
-            <div>
-              <span>
-                Programme
-              </span>
+                  <strong>
+                    {getStatus()}
+                  </strong>
 
-              <strong>
-                {applicant.program ||
-                  "Not provided"}
-              </strong>
-            </div>
+                  <small>
+                    Current application status
+                  </small>
 
-            <div>
-              <span>
-                Level
-              </span>
+                </div>
 
-              <strong>
-                {applicant.level ||
-                  "Not provided"}
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                GPA
-              </span>
-
-              <strong>
-                {applicant.gpa ||
-                  "Not provided"}
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                Expected Graduation
-              </span>
-
-              <strong>
-                {formatDate(
-                  applicant.expected_graduation
-                )}
-              </strong>
-            </div>
-
-          </div>
-
-        </section>
+              </div>
 
 
-        {/* =========================================
-            INTERNSHIP APPLICATION
-        ========================================= */}
+              {/* ACTION BUTTONS */}
 
-        <section className="admin-panel">
+              <div className="action-buttons">
 
-          <div className="admin-panel-header">
+                {/* APPROVE */}
 
-            <div>
+                <button
+                  type="button"
+                  className="approve-btn"
+                  disabled={updatingStatus}
+                  onClick={() =>
+                    updateStatus("approved")
+                  }
+                >
+                  {updatingStatus
+                    ? "Updating..."
+                    : "✓ Approve Application"}
+                </button>
+
+
+                {/* UNDER REVIEW */}
+
+                <button
+                  type="button"
+                  className="review-btn"
+                  disabled={updatingStatus}
+                  onClick={() =>
+                    updateStatus("under review")
+                  }
+                >
+                  {updatingStatus
+                    ? "Updating..."
+                    : "↻ Mark Under Review"}
+                </button>
+
+
+                {/* REJECT */}
+
+                <button
+                  type="button"
+                  className="reject-btn"
+                  disabled={updatingStatus}
+                  onClick={() =>
+                    updateStatus("rejected")
+                  }
+                >
+                  {updatingStatus
+                    ? "Updating..."
+                    : "✕ Reject Application"}
+                </button>
+
+              </div>
+
+            </section>
+
+
+            {/* ===============================================
+                APPLICATION SUMMARY
+            =============================================== */}
+
+            <section className="profile-side-card">
 
               <h2>
-                Internship Application
+                Application Summary
               </h2>
 
-              <p>
-                Details of the applicant's internship
-                request.
-              </p>
+              <div className="summary-item">
 
-            </div>
+                <span>
+                  Application ID
+                </span>
 
-          </div>
+                <strong>
+                  #{applicant.application_id}
+                </strong>
 
-          <div
-            className="dashboard-application-summary"
-          >
+              </div>
 
-            <div>
-              <span>
-                Department
-              </span>
 
-              <strong>
-                {applicant.department_name ||
-                  "Not specified"}
-              </strong>
-            </div>
+              <div className="summary-item">
 
-            <div>
-              <span>
-                Preferred Location
-              </span>
+                <span>
+                  Department
+                </span>
 
-              <strong>
-                {applicant.preferred_location ||
-                  "Not specified"}
-              </strong>
-            </div>
+                <strong>
+                  {applicant.department_name ||
+                    "Not assigned"}
+                </strong>
 
-            <div>
-              <span>
-                Start Date
-              </span>
+              </div>
 
-              <strong>
-                {formatDate(
-                  applicant.start_date
-                )}
-              </strong>
-            </div>
 
-            <div>
-              <span>
-                End Date
-              </span>
+              <div className="summary-item">
 
-              <strong>
-                {formatDate(
-                  applicant.end_date
-                )}
-              </strong>
-            </div>
+                <span>
+                  Status
+                </span>
 
-            <div>
-              <span>
-                Submitted
-              </span>
+                <strong
+                  className={
+                    getStatusClass() ===
+                    "pending"
+                      ? "orange-text"
+                      : ""
+                  }
+                >
+                  {getStatus()}
+                </strong>
 
-              <strong>
-                {formatDate(
-                  applicant.submitted_at
-                )}
-              </strong>
-            </div>
+              </div>
 
-            <div>
-              <span>
-                Status
-              </span>
 
-              <strong>
-                {getStatus()}
-              </strong>
-            </div>
+              <div className="summary-item">
+
+                <span>
+                  Submitted
+                </span>
+
+                <strong>
+                  {formatDate(
+                    applicant.submitted_at
+                  )}
+                </strong>
+
+              </div>
+
+
+              <div className="summary-item">
+
+                <span>
+                  Last Updated
+                </span>
+
+                <strong>
+                  {formatDate(
+                    applicant.updated_at
+                  )}
+                </strong>
+
+              </div>
+
+            </section>
 
           </div>
 
-        </section>
-
-
-        {/* =========================================
-            MOTIVATION
-        ========================================= */}
-
-        <section className="admin-panel">
-
-          <div className="admin-panel-header">
-
-            <div>
-
-              <h2>
-                Motivation
-              </h2>
-
-              <p>
-                Applicant's internship motivation.
-              </p>
-
-            </div>
-
-          </div>
-
-          <p
-            style={{
-              lineHeight: "1.8",
-              color: "#64748b",
-              whiteSpace: "pre-wrap",
-            }}
-          >
-            {applicant.motivation ||
-              "No motivation provided."}
-          </p>
-
-        </section>
-
-
-        {/* =========================================
-            DOCUMENTS
-        ========================================= */}
-
-        <section className="admin-panel">
-
-          <div className="admin-panel-header">
-
-            <div>
-
-              <h2>
-                Documents
-              </h2>
-
-              <p>
-                Documents submitted by the applicant.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div
-            className="dashboard-application-summary"
-          >
-
-            <div>
-              <span>
-                CV
-              </span>
-
-              <strong>
-                {applicant.cv_path
-                  ? "Uploaded"
-                  : "Not uploaded"}
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                Transcript
-              </span>
-
-              <strong>
-                {applicant.transcript_path
-                  ? "Uploaded"
-                  : "Not uploaded"}
-              </strong>
-            </div>
-
-            <div>
-              <span>
-                Cover Letter
-              </span>
-
-              <strong>
-                {applicant.cover_letter
-                  ? "Uploaded"
-                  : "Not uploaded"}
-              </strong>
-            </div>
-
-          </div>
-
-        </section>
+        </div>
 
       </main>
 

@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const { testDatabaseConnection } = require("./config/db");
 
 // =========================================
 // ROUTES
@@ -17,15 +16,19 @@ const adminDashboardRoutes = require("./routes/adminDashboardRoutes");
 const adminApplicantsRoutes = require("./routes/adminApplicantsRoutes");
 const adminReportsRoutes = require("./routes/adminReportsRoutes");
 const adminSettingsRoutes = require("./routes/adminSettingsRoutes");
-const adminApplicantRoutes = require("./routes/adminApplicantRoutes");
-const app = express();
 
+const app = express();
 
 // =========================================
 // MIDDLEWARE
 // =========================================
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: false,
+  })
+);
 
 app.use(express.json());
 
@@ -35,101 +38,59 @@ app.use(
   })
 );
 
-
 // =========================================
 // STUDENT ROUTES
 // =========================================
 
-app.use(
-  "/api/auth",
-  authRoutes
-);
-
-app.use(
-  "/api/applications",
-  applicationRoutes
-);
-
-app.use(
-  "/api/notifications",
-  notificationRoutes
-);
-
-app.use(
-  "/api/settings",
-  settingsRoutes
-);
-
+app.use("/api/auth", authRoutes);
+app.use("/api/applications", applicationRoutes);
+app.use("/api/notifications", notificationRoutes);
+app.use("/api/settings", settingsRoutes);
 
 // =========================================
 // ADMIN ROUTES
 // =========================================
 
-app.use(
-  "/api/admin/auth",
-  adminAuthRoutes
-);
+app.use("/api/admin/auth", adminAuthRoutes);
+app.use("/api/admin/dashboard", adminDashboardRoutes);
+app.use("/api/admin/applicants", adminApplicantsRoutes);
 
-app.use(
-  "/api/admin/dashboard",
-  adminDashboardRoutes
-);
-
-app.use(
-  "/api/admin/applicants",
-  adminApplicantsRoutes
-);
-
-app.use(
-  "/api/admin/applicant",
-  adminApplicantRoutes
-);
-
-app.use(
-  "/api/admin/departments",
-  adminDepartmentRoutes
-);
-
-app.use(
-  "/api/admin/reports",
-  adminReportsRoutes
-);
-
-app.use(
-  "/api/admin/notifications",
-  adminNotificationRoutes
-);
-
-app.use(
-  "/api/admin/settings",
-  adminSettingsRoutes
-);
+app.use("/api/admin/departments", adminDepartmentRoutes);
+app.use("/api/admin/reports", adminReportsRoutes);
+app.use("/api/admin/notifications", adminNotificationRoutes);
+app.use("/api/admin/settings", adminSettingsRoutes);
 
 // =========================================
 // TEST ROUTE
 // =========================================
 
 app.get("/", (req, res) => {
-
   res.json({
     message: "Internship Portal API is running 🚀",
   });
-
 });
 
+// =========================================
+// EXPORT FOR VERCEL
+// =========================================
+
+module.exports = app;
 
 // =========================================
-// START SERVER
+// LOCAL DEVELOPMENT
 // =========================================
 
-const PORT = process.env.PORT || 5000;
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, async () => {
+  app.listen(PORT, async () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 
-  console.log(
-    `Server running on http://localhost:${PORT}`
-  );
-
-  await testDatabaseConnection();
-
-});
+    try {
+      const { testDatabaseConnection } = require("./config/db");
+      await testDatabaseConnection();
+    } catch (error) {
+      console.error("Database test failed:", error.message);
+    }
+  });
+}

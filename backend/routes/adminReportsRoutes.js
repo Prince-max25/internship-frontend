@@ -319,7 +319,7 @@ router.get("/", async (req, res) => {
           YEAR(submitted_at),
           MONTH(submitted_at)
 
-        LIMIT 12
+        LIMIT 10000000000
       `);
 
 
