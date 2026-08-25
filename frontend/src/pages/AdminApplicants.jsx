@@ -12,7 +12,7 @@ function AdminApplicants() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const API_URL = "http://localhost:5000";
+  const API_URL = "https://internship-jh6u.vercel.app";
 
   // =========================================
   // GET APPLICANTS

@@ -59,7 +59,7 @@ function AdminReports() {
 
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/reports?${params.toString()}`
+        `https://internship-jh6u.vercel.app/api/admin/reports?${params.toString()}`
       );
 
 

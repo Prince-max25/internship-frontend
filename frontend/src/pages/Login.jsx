@@ -20,7 +20,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/login",
+        "https://internship-jh6u.vercel.app/api/auth/login",
         {
           method: "POST",
 

@@ -119,7 +119,7 @@ function Apply() {
     const loadDepartments = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/applications/departments"
+          "https://internship-jh6u.vercel.app/api/applications/departments"
         );
 
         const data = await response.json();
@@ -348,7 +348,7 @@ function Apply() {
       // =========================================
 
       const response = await fetch(
-        "http://localhost:5000/api/applications/submit",
+        "https://internship-jh6u.vercel.app/api/applications/submit",
         {
           method: "POST",
           body: dataToSend,

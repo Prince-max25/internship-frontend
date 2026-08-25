@@ -141,7 +141,7 @@ function Profile() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/profile",
+        "https://internship-jh6u.vercel.app/api/auth/profile",
         {
           method: "PUT",
 

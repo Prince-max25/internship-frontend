@@ -5,7 +5,7 @@ import AdminLogoutButton from "../components/AdminLogoutButton";
 
 function AdminDashboard() {
 
-  const API_URL = "http://localhost:5000";
+  const API_URL = "https://internship-jh6u.vercel.app";
 
   const [dashboard, setDashboard] = useState(null);
   const [loading, setLoading] = useState(true);

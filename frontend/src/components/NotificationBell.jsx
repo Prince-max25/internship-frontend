@@ -19,7 +19,7 @@ function NotificationBell() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/notifications/student/${studentId}/unread-count`
+        `https://internship-jh6u.vercel.app/api/notifications/student/${studentId}/unread-count`
       );
 
       if (!response.ok) {

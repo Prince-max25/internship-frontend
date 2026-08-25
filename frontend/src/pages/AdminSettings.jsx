@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./AdminSettings.css";
 import AdminLogoutButton from "../components/AdminLogoutButton";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://internship-jh6u.vercel.app";
 
 function AdminSettings() {
   const [activeTab, setActiveTab] = useState("general");

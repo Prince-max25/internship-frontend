@@ -49,7 +49,7 @@ function ApplicationStatus() {
         setError("");
 
         const response = await fetch(
-          `http://localhost:5000/api/applications/student/${student.id}`
+          `https://internship-jh6u.vercel.app/api/applications/student/${student.id}`
         );
 
         const data = await response.json();
@@ -205,7 +205,7 @@ function ApplicationStatus() {
       return filePath;
     }
 
-    return `http://localhost:5000${filePath}`;
+    return `https://internship-jh6u.vercel.app${filePath}`;
   };
 
   // =========================================

@@ -19,7 +19,7 @@ function AdminLogin() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/admin/auth/login",
+        "https://internship-jh6u.vercel.app/api/admin/auth/login",
         {
           method: "POST",
 

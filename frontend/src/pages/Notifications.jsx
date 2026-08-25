@@ -68,7 +68,7 @@ function Notifications() {
 
       const response = await fetch(
 
-        `http://localhost:5000/api/notifications/student/${student.id}`
+        `https://internship-jh6u.vercel.app/api/notifications/student/${student.id}`
 
       );
 
@@ -151,7 +151,7 @@ function Notifications() {
 
       const response = await fetch(
 
-        `http://localhost:5000/api/notifications/${notificationId}/read`,
+        `https://internship-jh6u.vercel.app/api/notifications/${notificationId}/read`,
 
         {
           method: "PUT",
@@ -240,7 +240,7 @@ function Notifications() {
 
       const response = await fetch(
 
-        `http://localhost:5000/api/notifications/student/${student.id}/read-all`,
+        `https://internship-jh6u.vercel.app/api/notifications/student/${student.id}/read-all`,
 
         {
           method: "PUT",

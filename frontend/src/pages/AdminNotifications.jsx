@@ -28,7 +28,7 @@ function AdminNotifications() {
 
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/notifications"
+        "https://internship-jh6u.vercel.app/api/admin/notifications"
       );
 
 
@@ -150,7 +150,7 @@ function AdminNotifications() {
     try {
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/notifications/${id}/read`,
+        `https://internship-jh6u.vercel.app/api/admin/notifications/${id}/read`,
         {
           method: "PUT",
         }
@@ -207,7 +207,7 @@ function AdminNotifications() {
     try {
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/notifications/read-all",
+        "https://internship-jh6u.vercel.app/api/admin/notifications/read-all",
         {
           method: "PUT",
         }
@@ -271,7 +271,7 @@ function AdminNotifications() {
     try {
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/notifications/${id}`,
+        `https://internship-jh6u.vercel.app/api/admin/notifications/${id}`,
         {
           method: "DELETE",
         }
@@ -337,7 +337,7 @@ function AdminNotifications() {
       ) {
 
         await fetch(
-          `http://localhost:5000/api/admin/notifications/${notification.id}`,
+          `https://internship-jh6u.vercel.app/api/admin/notifications/${notification.id}`,
           {
             method: "DELETE",
           }
