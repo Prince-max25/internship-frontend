@@ -1,37 +1,38 @@
 const bcrypt = require("bcryptjs");
 const { pool } = require("./config/db");
 
-const createAdmin = async () => {
-  try {
-    const password = "Admin@123";
+const resetAdminPassword = async () => {
+try {
+const password = "Admin@123";
+const hashedPassword = await bcrypt.hash(password, 10);
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+const [result] = await pool.query(
+  `UPDATE admins
+   SET password = ?
+   WHERE username = ?`,
+  [hashedPassword, "admin"]
+);
 
-    await pool.query(
-      `INSERT INTO admins
-      (full_name, username, email, password)
-      VALUES (?, ?, ?, ?)`,
-      [
-        "System Administrator",
-        "admin",
-        "admin@portal.com",
-        hashedPassword,
-      ]
-    );
+if (result.affectedRows === 0) {
+  console.log(
+    "No admin account was updated. Check the username."
+  );
+} else {
+  console.log("Admin password updated successfully.");
+  console.log("Username: admin");
+  console.log("Email: admin@portal.com");
+  console.log("Password: Admin@123");
+}
 
-    console.log("Admin account created successfully.");
 
-    console.log("Username: admin");
-    console.log("Email: admin@portal.com");
-    console.log("Password: Admin@123");
-
-    process.exit(0);
-
-  } catch (error) {
-    console.error("Error creating admin:", error);
-
-    process.exit(1);
-  }
+} catch (error) {
+console.error(
+"Error updating admin password:",
+error.message
+);
+} finally {
+await pool.end();
+}
 };
 
-createAdmin();
+resetAdminPassword();

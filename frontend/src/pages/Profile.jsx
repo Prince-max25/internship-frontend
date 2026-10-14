@@ -1,6 +1,6 @@
-
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./Dashboard.css"
 import "./Profile.css";
 import NotificationBell from "../components/NotificationBell";
 import LogoutButton from "../components/LogoutButton";
@@ -20,6 +20,7 @@ function Profile() {
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (!student) {
     navigate("/login");
@@ -285,11 +286,25 @@ function Profile() {
   return (
     <div className="dashboard">
 
+      <button
+        type="button"
+        className="mobile-menu-toggle"
+        onClick={() => setSidebarOpen(true)}
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+      <div
+        className={`sidebar-overlay ${sidebarOpen ? "open" : ""}`}
+        onClick={() => setSidebarOpen(false)}
+      ></div>
+
       {/* =========================================
           SIDEBAR
       ========================================= */}
 
-      <aside className="sidebar">
+      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
 
         <div className="sidebar-logo">
           Internship<span>Portal</span>
@@ -300,6 +315,7 @@ function Profile() {
           <Link
             to="/dashboard"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>⌂</span>
             Dashboard
@@ -308,6 +324,7 @@ function Profile() {
           <Link
             to="/apply"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>▣</span>
             My Application
@@ -316,6 +333,7 @@ function Profile() {
           <Link
             to="/application-status"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>▤</span>
             Application Status
@@ -324,6 +342,7 @@ function Profile() {
           <Link
             to="/notifications"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>♢</span>
             Notifications
@@ -332,6 +351,7 @@ function Profile() {
           <Link
             to="/profile"
             className="sidebar-link active"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>◯</span>
             My Profile
@@ -340,6 +360,7 @@ function Profile() {
           <Link
             to="/settings"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>⚙</span>
             Settings

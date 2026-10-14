@@ -1,6 +1,6 @@
-
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./Dashboard.css"
 import "./Apply.css";
 import NotificationBell from "../components/NotificationBell";
 
@@ -38,6 +38,8 @@ function Apply() {
   const [message, setMessage] = useState("");
 
   const [error, setError] = useState("");
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -465,11 +467,25 @@ function Apply() {
   return (
     <div className="dashboard application-page">
 
+      <button
+        type="button"
+        className="mobile-menu-toggle"
+        onClick={() => setSidebarOpen(true)}
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+      <div
+        className={`sidebar-overlay ${sidebarOpen ? "open" : ""}`}
+        onClick={() => setSidebarOpen(false)}
+      ></div>
+
       {/* ===================================== */}
       {/* SIDEBAR */}
       {/* ===================================== */}
 
-      <aside className="sidebar">
+      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
 
         <div className="sidebar-logo">
           Internship<span>Portal</span>
@@ -486,6 +502,7 @@ function Apply() {
                   ? "active"
                   : ""
               }`}
+              onClick={() => setSidebarOpen(false)}
             >
               <span>{link.icon}</span>
               {link.label}

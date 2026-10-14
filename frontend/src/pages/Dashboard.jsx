@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
@@ -57,6 +56,8 @@ function Dashboard() {
   const [unreadCount, setUnreadCount] = useState(0);
 
   const [loading, setLoading] = useState(true);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
 
   // =========================================
@@ -441,10 +442,40 @@ function Dashboard() {
 
 
       {/* =========================================
+          MOBILE MENU TOGGLE
+      ========================================= */}
+
+      <button
+        type="button"
+        className="mobile-menu-toggle"
+        onClick={() => setSidebarOpen(true)}
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+
+      {/* =========================================
+          MOBILE OVERLAY
+      ========================================= */}
+
+      <div
+        className={`sidebar-overlay ${
+          sidebarOpen ? "open" : ""
+        }`}
+        onClick={() => setSidebarOpen(false)}
+      ></div>
+
+
+      {/* =========================================
           SIDEBAR
       ========================================= */}
 
-      <aside className="sidebar">
+      <aside
+        className={`sidebar ${
+          sidebarOpen ? "open" : ""
+        }`}
+      >
 
         <div className="sidebar-logo">
           Internship<span>Portal</span>
@@ -456,6 +487,7 @@ function Dashboard() {
           <Link
             to="/dashboard"
             className="sidebar-link active"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>⌂</span>
             Dashboard
@@ -465,6 +497,7 @@ function Dashboard() {
           <Link
             to="/apply"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>▣</span>
             My Application
@@ -474,6 +507,7 @@ function Dashboard() {
           <Link
             to="/application-status"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>▤</span>
             Application Status
@@ -483,6 +517,7 @@ function Dashboard() {
           <Link
             to="/notifications"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>♢</span>
             Notifications
@@ -501,6 +536,7 @@ function Dashboard() {
           <Link
             to="/profile"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>◯</span>
             My Profile
@@ -510,6 +546,7 @@ function Dashboard() {
           <Link
             to="/settings"
             className="sidebar-link"
+            onClick={() => setSidebarOpen(false)}
           >
             <span>⚙</span>
             Settings
