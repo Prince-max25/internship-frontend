@@ -423,61 +423,143 @@
 }
 
 
+
 /* =========================================
-   DEPARTMENTS
+   DEPARTMENTS SECTION
 ========================================= */
 
-.opportunities {
-  background: #f8fafc;
+.home .opportunities {
+  position: relative;
+  isolation: isolate;
+  padding: 100px 7%;
+  overflow: hidden;
+ 
 }
 
-.department-grid {
+/* Background image */
+
+.home .opportunities::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85");
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* Dark overlay for readability */
+
+.home .opportunities::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+ 
+}
+
+/* Section heading */
+
+.home .opportunities .section-heading h2 {
+  color: #ffffff;
+}
+
+.home .opportunities .section-heading > span {
+  color: #dbeafe;
+}
+
+/* Department grid */
+
+.home .department-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 
-.department-card {
+/* Transparent glass cards */
+
+.home .department-card {
   padding: 30px;
-  border: 1px solid #b6c0d7;
-  border-radius: 15px;
-  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease,
-    background 0.3s ease;
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.department-card:hover {
-  transform: translateY(-5px);
-  border-color: #2563eb;
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.06);
+/* Hover effect */
+
+.home .department-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(147, 197, 253, 0.8);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-.department-card > span {
+/* Department numbers */
+
+.home .department-card > span {
   display: inline-flex;
   margin-bottom: 18px;
-  color: #2563eb;
+  color: #93c5fd;
   font-size: 13px;
   font-weight: 700;
 }
 
-.department-card h3 {
+/* Department titles */
+
+.home .department-card h3 {
   margin: 0 0 10px;
-  color: #111827;
+  color: #ffffff;
   font-size: 18px;
-  transition: color 0.3s ease;
 }
 
-.department-card p {
+/* Department descriptions */
+
+.home .department-card p {
   margin: 0;
-  color: #6b7280;
+  color: #e2e8f0;
   font-size: 14px;
-  line-height: 1.6;
-  transition: color 0.3s ease;
+  line-height: 1.7;
+}
+
+/* Dark mode */
+
+body.dark-mode .home .opportunities::after {
+  background: rgba(2, 6, 23, 0.92);
+}
+
+body.dark-mode .home .department-card {
+  background: rgba(15, 23, 42, 0.55);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive layout */
+
+@media (max-width: 900px) {
+  .home .department-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .home .opportunities {
+    padding: 70px 6%;
+  }
+
+  .home .department-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 
