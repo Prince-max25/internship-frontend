@@ -1,0 +1,202 @@
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: #f5f7fb;
+}
+
+.admin-login-container {
+  width: 100%;
+  max-width: 460px;
+  padding: 45px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+
+/* BRAND */
+
+.admin-brand {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.admin-logo {
+  font-size: 23px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.admin-logo span {
+  color: #2563eb;
+}
+
+.admin-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+
+/* HEADER */
+
+.admin-login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.admin-login-header h1 {
+  font-size: 28px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.admin-login-header p {
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* FORM */
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.admin-form-group input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.admin-form-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.admin-password-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-password-label a {
+  color: #2563eb;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+
+/* REMEMBER */
+
+.remember-admin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remember-admin input {
+  width: 15px;
+  height: 15px;
+  accent-color: #2563eb;
+}
+
+.remember-admin label {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+
+/* BUTTON */
+
+.admin-login-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-login-btn:hover {
+  background: #1f2937;
+}
+
+
+/* SECURITY */
+
+.admin-security-note {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+  padding: 13px;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.admin-security-note span {
+  font-size: 15px;
+}
+
+.admin-security-note p {
+  color: #6b7280;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+
+/* BACK */
+
+.admin-back-home {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  color: #6b7280;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.admin-back-home:hover {
+  color: #2563eb;
+}
+
+
+@media (max-width: 500px) {
+
+  .admin-login-container {
+    padding: 30px 22px;
+  }
+
+}
