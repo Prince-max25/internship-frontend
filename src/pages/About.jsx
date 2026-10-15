@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import "./About.css";
 
@@ -7,7 +8,6 @@ function About() {
 
       {/* Navigation */}
       <nav className="navbar">
-
         <Link to="/" className="logo">
           Internship<span>Portal</span>
         </Link>
@@ -20,29 +20,19 @@ function About() {
         </div>
 
         <div className="nav-actions">
-
-          <Link to="/login">
-            <button className="login-btn">
-              Login
-            </button>
+          <Link to="/login" className="login-btn">
+            Login
           </Link>
 
-          <Link to="/login">
-            <button className="apply-btn">
-              Apply Now
-            </button>
+          <Link to="/login" className="apply-btn">
+            Apply Now
           </Link>
-
         </div>
-
       </nav>
-
 
       {/* Hero */}
       <section className="about-hero">
-
         <div className="about-hero-content">
-
           <p className="about-label">
             ABOUT INTERNSHIP PORTAL
           </p>
@@ -58,17 +48,12 @@ function About() {
             internship opportunities, develop professional skills,
             and take their first steps into the world of work.
           </p>
-
         </div>
-
       </section>
 
-
-      {/* About Content */}
+      {/* About Introduction */}
       <section className="about-intro">
-
         <div className="about-intro-text">
-
           <p className="section-label">
             WHO WE ARE
           </p>
@@ -92,12 +77,9 @@ function About() {
           <Link to="/departments" className="about-button">
             Explore Departments →
           </Link>
-
         </div>
 
-
         <div className="about-intro-card">
-
           <div className="about-card-number">
             01
           </div>
@@ -111,32 +93,23 @@ function About() {
             gain practical experience and prepare for successful
             careers.
           </p>
-
         </div>
-
       </section>
 
-
-      {/* Mission & Vision */}
+      {/* Mission and Vision */}
       <section className="mission-section">
-
         <div className="section-heading">
-
           <p>
             WHAT DRIVES US
           </p>
 
           <h2>
-            Our Mission & Vision
+            Our Mission &amp; Vision
           </h2>
-
         </div>
 
-
         <div className="mission-grid">
-
           <div className="mission-card">
-
             <div className="mission-icon">
               01
             </div>
@@ -150,12 +123,9 @@ function About() {
               opportunities while making the application and
               management process simple and efficient.
             </p>
-
           </div>
 
-
           <div className="mission-card">
-
             <div className="mission-icon">
               02
             </div>
@@ -169,19 +139,13 @@ function About() {
               transition from academic learning to meaningful
               professional careers.
             </p>
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* Benefits */}
       <section className="about-benefits">
-
         <div className="section-heading">
-
           <p>
             WHY INTERNSHIPS MATTER
           </p>
@@ -194,14 +158,10 @@ function About() {
             An internship is more than a requirement.
             It is an opportunity to grow.
           </span>
-
         </div>
 
-
         <div className="benefit-grid">
-
           <div className="benefit-card">
-
             <span>01</span>
 
             <h3>
@@ -212,12 +172,9 @@ function About() {
               Apply what you have learned in school to real-world
               projects and professional environments.
             </p>
-
           </div>
 
-
           <div className="benefit-card">
-
             <span>02</span>
 
             <h3>
@@ -228,12 +185,9 @@ function About() {
               Develop technical, communication and teamwork skills
               that employers value.
             </p>
-
           </div>
 
-
           <div className="benefit-card">
-
             <span>03</span>
 
             <h3>
@@ -244,61 +198,48 @@ function About() {
               Meet professionals, build relationships and create
               connections that can support your career.
             </p>
-
           </div>
 
-
           <div className="benefit-card">
-
             <span>04</span>
 
             <h3>
-              Prepare For Your Career
+              Prepare for Your Career
             </h3>
 
             <p>
               Gain confidence and experience that can help you
               transition successfully into the workplace.
             </p>
-
           </div>
-
         </div>
-
       </section>
 
-
-      {/* CTA */}
+      {/* Call to Action */}
       <section className="about-cta">
+        <div className="about-cta-content">
+          <p>
+            START YOUR JOURNEY
+          </p>
 
-        <p>
-          START YOUR JOURNEY
-        </p>
+          <h2>
+            Ready to Gain Real Experience?
+          </h2>
 
-        <h2>
-          Ready to Gain Real Experience?
-        </h2>
+          <span>
+            Explore available departments and begin your internship journey.
+          </span>
 
-        <span>
-          Explore available departments and begin your internship journey.
-        </span>
-
-        <Link to="/login">
-          <button className="primary-btn">
+          <Link to="/login" className="primary-btn">
             Apply for Internship →
-          </button>
-        </Link>
-
+          </Link>
+        </div>
       </section>
-
 
       {/* Footer */}
-      <footer>
-
+      <footer className="about-footer">
         <div className="footer-top">
-
-          <div>
-
+          <div className="footer-brand">
             <Link to="/" className="footer-logo">
               Internship<span>Portal</span>
             </Link>
@@ -307,60 +248,27 @@ function About() {
               Connecting students with opportunities to learn,
               grow, and succeed.
             </p>
-
           </div>
-
 
           <div className="footer-column">
+            <h3>Portal</h3>
 
-            <h3>
-              Portal
-            </h3>
-
-            <Link to="/">
-              Home
-            </Link>
-
-            <Link to="/about">
-              About
-            </Link>
-
-            <Link to="/departments">
-              Departments
-            </Link>
-
-            <Link to="/contact">
-              Contact
-            </Link>
-
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/departments">Departments</Link>
+            <Link to="/contact">Contact</Link>
           </div>
-
 
           <div className="footer-column">
+            <h3>Students</h3>
 
-            <h3>
-              Students
-            </h3>
-
-            <Link to="/login">
-              Login
-            </Link>
-
-            <Link to="/login">
-              Apply
-            </Link>
-
-            <Link to="/dashboard">
-              Student Portal
-            </Link>
-
+            <Link to="/login">Login</Link>
+            <Link to="/login">Apply</Link>
+            <Link to="/dashboard">Student Portal</Link>
           </div>
-
         </div>
 
-
         <div className="footer-bottom">
-
           <p>
             © 2026 Internship Portal. All rights reserved.
           </p>
@@ -368,9 +276,7 @@ function About() {
           <span>
             Internship Opportunities Portal
           </span>
-
         </div>
-
       </footer>
 
     </div>
