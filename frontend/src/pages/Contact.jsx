@@ -40,8 +40,19 @@ function Contact() {
       </nav>
 
 
-      {/* Hero */}
+      {/* Hero with full-background slideshow */}
       <section className="contact-hero">
+
+        <div
+          className="contact-hero-slideshow"
+          aria-hidden="true"
+        >
+          <div className="contact-hero-slide contact-slide-one"></div>
+          <div className="contact-hero-slide contact-slide-two"></div>
+          <div className="contact-hero-slide contact-slide-three"></div>
+        </div>
+
+        <div className="contact-hero-overlay"></div>
 
         <div className="contact-hero-content">
 
@@ -82,6 +93,7 @@ function Contact() {
           </p>
 
 
+          {/* Contact Details */}
           <div className="contact-details">
 
             <div className="contact-detail">
@@ -148,13 +160,16 @@ function Contact() {
 
               <div className="contact-field">
 
-                <label>
+                <label htmlFor="contact-name">
                   Full Name
                 </label>
 
                 <input
+                  id="contact-name"
                   type="text"
+                  name="name"
                   placeholder="Enter your full name"
+                  required
                 />
 
               </div>
@@ -162,13 +177,16 @@ function Contact() {
 
               <div className="contact-field">
 
-                <label>
+                <label htmlFor="contact-email">
                   Email Address
                 </label>
 
                 <input
+                  id="contact-email"
                   type="email"
+                  name="email"
                   placeholder="Enter your email"
+                  required
                 />
 
               </div>
@@ -178,13 +196,16 @@ function Contact() {
 
             <div className="contact-field">
 
-              <label>
+              <label htmlFor="contact-subject">
                 Subject
               </label>
 
               <input
+                id="contact-subject"
                 type="text"
+                name="subject"
                 placeholder="What is your message about?"
+                required
               />
 
             </div>
@@ -192,13 +213,16 @@ function Contact() {
 
             <div className="contact-field">
 
-              <label>
+              <label htmlFor="contact-message">
                 Message
               </label>
 
               <textarea
+                id="contact-message"
+                name="message"
                 rows="7"
                 placeholder="Write your message here..."
+                required
               ></textarea>
 
             </div>
@@ -218,7 +242,7 @@ function Contact() {
       </section>
 
 
-      {/* FAQ */}
+      {/* FAQ Cards with Background Images */}
       <section className="contact-faq">
 
         <div className="section-heading">
@@ -298,7 +322,7 @@ function Contact() {
       </section>
 
 
-      {/* CTA */}
+      {/* Call to Action */}
       <section className="contact-cta">
 
         <p>
