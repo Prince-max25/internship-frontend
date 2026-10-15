@@ -1,0 +1,822 @@
+
+/* =========================================
+   ABOUT PAGE — MATCHES About.jsx
+========================================= */
+
+.about-page {
+    width: 100%;
+    overflow: hidden;
+    color: #17243a;
+    background: #f5f8fc;
+    
+}
+
+.about-page *,
+.about-page *::before,
+.about-page *::after {
+    box-sizing: border-box;
+}
+
+.about-page h1,
+.about-page h2,
+.about-page h3 {
+    line-height: 1.25;
+}
+
+.about-page p {
+    line-height: 1.8;
+}
+
+.about-page a {
+    text-decoration: none;
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.about-page .navbar {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 20px 7%;
+    background: #ffffff;
+    box-shadow: 0 4px 18px rgba(20, 40, 70, 0.07);
+}
+
+.about-page .logo,
+.about-page .footer-logo {
+    flex-shrink: 0;
+    color: #17365f;
+    font-size: 1.6rem;
+    
+}
+
+.about-page .logo span,
+.about-page .footer-logo span {
+    color: #1768c4;
+}
+
+.about-page .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.about-page .nav-links a {
+    color: #34445a;
+    font-size: 0.95rem;
+    transition: color 0.25s ease;
+}
+
+.about-page .nav-links a:hover,
+.about-page .nav-links a.active {
+    color: #1768c4;
+}
+
+.about-page .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.about-page .login-btn,
+.about-page .apply-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 19px;
+    border: 1px solid #1768c4;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.about-page .login-btn {
+    color: #1768c4;
+    background: transparent;
+}
+
+.about-page .login-btn:hover {
+    color: #ffffff;
+    background: #1768c4;
+}
+
+.about-page .apply-btn {
+    color: #ffffff;
+    background: #1768c4;
+}
+
+.about-page .apply-btn:hover {
+    background: #104e96;
+}
+
+/* =========================================
+   HERO — IMAGE 1: TEAMWORK
+========================================= */
+
+.about-page .about-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 520px;
+    padding: 90px 7%;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 24, 49, 0.22),
+            rgba(15, 48, 91, 0.15)
+        ),
+        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2000&q=85")
+        center 45% / cover no-repeat;
+}
+
+.about-page .about-hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    background: rgba(8, 24, 49, 0.34);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.about-page .about-label {
+    margin: 0 0 18px;
+    color: #d8eaff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.about-page .about-hero h1 {
+    margin: 0 0 22px;
+    color: #ffffff;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+}
+
+.about-page .about-hero h1 span {
+    color: #8dc4ff;
+}
+
+.about-page .about-hero-content > p:last-child {
+    max-width: 750px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   ABOUT INTRO — IMAGE 2: MODERN OFFICE
+========================================= */
+
+.about-page .about-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(250px, 0.8fr);
+    align-items: center;
+    gap: 40px;
+    padding: 85px 7%;
+    margin-bottom: 100px;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.20),
+            rgba(255, 255, 255, 0.15)
+        ),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.about-page .about-intro-text {
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.89);
+    box-shadow: 0 12px 35px rgba(20, 40, 70, 0.1);
+}
+
+.about-page .section-label {
+    margin: 0 0 12px;
+    color: #1768c4;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.about-page .about-intro-text h2 {
+    margin: 0 0 20px;
+    color: #17365f;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+}
+
+.about-page .about-intro-text p:not(.section-label) {
+    margin: 0 0 18px;
+    color: #34445a;
+}
+
+.about-page .about-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 14px 22px;
+    border-radius: 8px;
+    background: #1768c4;
+    color: #ffffff;
+    font-weight: 700;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.about-page .about-button:hover {
+    transform: translateY(-2px);
+    background: #104e96;
+}
+
+.about-page .about-intro-card {
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 35px rgba(20, 40, 70, 0.12);
+}
+
+.about-page .about-card-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 25px;
+    border-radius: 14px;
+    background: #e3efff;
+    color: #1768c4;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.about-page .about-intro-card h3 {
+    margin: 0 0 15px;
+    color: #17365f;
+    font-size: 1.5rem;
+}
+
+.about-page .about-intro-card p {
+    margin: 0;
+    color: #34445a;
+}
+
+/* =========================================
+   SHARED SECTION HEADINGS
+========================================= */
+
+.about-page .section-heading {
+    max-width: 850px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.about-page .section-heading > p {
+    margin: 0 0 12px;
+    color: #1768c4;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.about-page .section-heading h2 {
+    margin: 0 0 18px;
+    color: #17365f;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.about-page .section-heading > span {
+    display: block;
+    color: #34445a;
+    font-size: 1.05rem;
+}
+
+/* =========================================
+   MISSION & VISION — IMAGE 3: MEETING
+========================================= */
+
+.about-page .mission-section {
+    padding: 85px 7%;
+    margin-bottom: 100px;
+    background:
+        linear-gradient(
+            rgba(239, 246, 255, 0.20),
+            rgba(248, 250, 255, 0.25)
+        ),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.about-page .mission-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-page .mission-card {
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.89);
+    box-shadow: 0 12px 35px rgba(20, 40, 70, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-page .mission-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(20, 40, 70, 0.18);
+}
+
+.about-page .mission-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    margin-bottom: 22px;
+    border-radius: 14px;
+    background: #e3efff;
+    color: #1768c4;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.about-page .mission-card h3 {
+    margin: 0 0 15px;
+    color: #174b87;
+    font-size: 1.5rem;
+}
+
+.about-page .mission-card p {
+    margin: 0;
+    color: #34445a;
+}
+
+/* =========================================
+   BENEFITS — IMAGE 4: WORKSPACE
+   IMPORTANT: JSX uses .benefit-grid
+========================================= */
+
+.about-page .about-benefits {
+    padding: 85px 7%;
+    margin-bottom: 100px;
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.22),
+            rgba(248, 250, 255, 0.25)
+        ),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.about-page .benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.about-page .benefit-card {
+    padding: 28px 23px;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.91);
+    box-shadow: 0 10px 30px rgba(20, 40, 70, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-page .benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(20, 40, 70, 0.17);
+}
+
+.about-page .benefit-card > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: #e3efff;
+    color: #1768c4;
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.about-page .benefit-card h3 {
+    margin: 0 0 13px;
+    color: #174b87;
+    font-size: 1.2rem;
+}
+
+.about-page .benefit-card p {
+    margin: 0;
+    color: #34445a;
+    font-size: 0.96rem;
+}
+
+/* =========================================
+   CALL TO ACTION — IMAGE 5: TEAM
+========================================= */
+
+.about-page .about-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+    padding: 75px 7%;
+    color: #ffffff;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(8, 22, 44, 0.28),
+            rgba(25, 69, 133, 0.20)
+        ),
+        url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.about-page .about-cta > p {
+    margin: 0 0 15px;
+    color: #d8eaff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.about-page .about-cta h2 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.about-page .about-cta > span {
+    display: block;
+    margin-bottom: 28px;
+    color: #ffffff;
+    line-height: 1.8;
+}
+
+.about-page .primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 25px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #174b87;
+    font-weight: 800;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.about-page .primary-btn:hover {
+    transform: translateY(-3px);
+    background: #e8f2ff;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.about-page footer {
+    padding: 60px 8% 20px;
+    background: #101e33;
+    color: #e1e8f2;
+}
+
+.about-page .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 55px;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.about-page .footer-logo {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.about-page .footer-top > div:first-child p {
+    max-width: 380px;
+    margin: 0;
+    color: #c5d0df;
+}
+
+.about-page .footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.about-page .footer-column h3 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.about-page .footer-column a {
+    color: #c5d0df;
+    transition: color 0.25s ease;
+}
+
+.about-page .footer-column a:hover {
+    color: #8dc4ff;
+}
+
+.about-page .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.about-page .footer-bottom p,
+.about-page .footer-bottom span {
+    margin: 0;
+    color: #c5d0df;
+    font-size: 0.88rem;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+    .about-page .navbar {
+        flex-wrap: wrap;
+        padding: 18px 5%;
+    }
+
+    .about-page .nav-links {
+        gap: 18px;
+    }
+
+    .about-page .about-intro {
+        grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.8fr);
+        gap: 25px;
+        padding: 65px 5%;
+    }
+
+    .about-page .mission-section,
+    .about-page .about-benefits {
+        padding: 65px 5%;
+    }
+
+    .about-page .benefit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about-page .footer-top {
+        gap: 30px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+    .about-page .navbar {
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .about-page .logo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-page .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .about-page .nav-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .about-page .about-hero {
+        min-height: 400px;
+        padding: 55px 5%;
+    }
+
+    .about-page .about-hero-content {
+        padding: 27px 18px;
+    }
+
+    .about-page .about-hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .about-page .about-hero-content > p:last-child {
+        font-size: 1rem;
+    }
+
+    .about-page .about-intro {
+        grid-template-columns: 1fr;
+        padding: 50px 5%;
+    }
+
+    .about-page .about-intro-text,
+    .about-page .about-intro-card {
+        padding: 25px 20px;
+    }
+
+    .about-page .mission-section,
+    .about-page .about-benefits {
+        padding: 50px 5%;
+    }
+
+    .about-page .mission-grid,
+    .about-page .benefit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-page .mission-card,
+    .about-page .benefit-card {
+        padding: 25px 20px;
+    }
+
+    .about-page .section-heading h2,
+    .about-page .about-intro-text h2 {
+        font-size: 2rem;
+    }
+
+    .about-page .about-cta {
+        min-height: 340px;
+        padding: 50px 5%;
+    }
+
+    .about-page .about-cta h2 {
+        font-size: 2rem;
+    }
+
+    .about-page footer {
+        padding: 45px 6% 20px;
+    }
+
+    .about-page .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .about-page .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+.dark-mode .about-page {
+    color: #e1e8f2;
+    background: #101827;
+}
+
+.dark-mode .about-page .navbar {
+    background: #111c2e;
+}
+
+.dark-mode .about-page .logo,
+.dark-mode .about-page .nav-links a {
+    color: #e1e8f2;
+}
+
+.dark-mode .about-page .logo span,
+.dark-mode .about-page .nav-links a:hover,
+.dark-mode .about-page .nav-links a.active {
+    color: #8dc4ff;
+}
+
+.dark-mode .about-page .about-hero {
+    background:
+        linear-gradient(
+            rgba(4, 12, 25, 0.35),
+            rgba(8, 24, 45, 0.28)
+        ),
+        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.dark-mode .about-page .about-intro {
+    background:
+        linear-gradient(
+            rgba(8, 16, 30, 0.38),
+            rgba(8, 16, 30, 0.32)
+        ),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.dark-mode .about-page .mission-section {
+    background:
+        linear-gradient(
+            rgba(8, 16, 30, 0.38),
+            rgba(8, 16, 30, 0.32)
+        ),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.dark-mode .about-page .about-benefits {
+    background:
+        linear-gradient(
+            rgba(8, 16, 30, 0.38),
+            rgba(8, 16, 30, 0.32)
+        ),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.dark-mode .about-page .about-cta {
+    background:
+        linear-gradient(
+            rgba(4, 12, 25, 0.38),
+            rgba(8, 24, 45, 0.30)
+        ),
+        url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=85")
+        center / cover no-repeat;
+}
+
+.dark-mode .about-page .about-intro-text,
+.dark-mode .about-page .about-intro-card,
+.dark-mode .about-page .mission-card,
+.dark-mode .about-page .benefit-card {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(15, 25, 42, 0.91);
+}
+
+.dark-mode .about-page .about-intro-text h2,
+.dark-mode .about-page .about-intro-card h3,
+.dark-mode .about-page .mission-card h3,
+.dark-mode .about-page .benefit-card h3,
+.dark-mode .about-page .section-heading h2 {
+    color: #a9d0ff;
+}
+
+.dark-mode .about-page .about-intro-text p,
+.dark-mode .about-page .about-intro-card p,
+.dark-mode .about-page .mission-card p,
+.dark-mode .about-page .benefit-card p,
+.dark-mode .about-page .section-heading > span {
+    color: #e1e8f2;
+}
+
+.dark-mode .about-page .about-card-number,
+.dark-mode .about-page .mission-icon,
+.dark-mode .about-page .benefit-card > span {
+    background: #233b5c;
+    color: #a9d0ff;
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .about-page *,
+    .about-page *::before,
+    .about-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
