@@ -1,0 +1,418 @@
+/* =========================================
+   SETTINGS CONTAINER
+========================================= */
+
+.settings-container {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+
+/* =========================================
+   SETTINGS SIDEBAR
+========================================= */
+
+.settings-sidebar {
+  background: #ffffff;
+  border: 1px solid #dfe3e8;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.settings-sidebar button {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #4b5563;
+  padding: 12px 13px;
+  margin-bottom: 3px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settings-sidebar button:last-child {
+  margin-bottom: 0;
+}
+
+.settings-sidebar button span {
+  width: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.settings-sidebar button:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.settings-sidebar button.active {
+  background: #eaf2ff;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   SETTINGS CONTENT
+========================================= */
+
+.settings-content {
+  background: #ffffff;
+  border: 1px solid #dfe3e8;
+  border-radius: 12px;
+  padding: 26px;
+  min-width: 0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+
+/* =========================================
+   SETTINGS TITLE
+========================================= */
+
+.settings-title {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+}
+
+.settings-title h2 {
+  margin: 0 0 7px;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.settings-title p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.settings-form {
+  width: 100%;
+  max-width: 700px;
+}
+
+.settings-field {
+  margin-bottom: 20px;
+}
+
+.settings-field:last-child {
+  margin-bottom: 0;
+}
+
+.settings-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #1f2937;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.settings-field input,
+.settings-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: #ffffff;
+  color: #111827;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.settings-field input::placeholder,
+.settings-field textarea::placeholder {
+  color: #9ca3af;
+}
+
+.settings-field input:hover,
+.settings-field textarea:hover {
+  border-color: #94a3b8;
+}
+
+.settings-field input:focus,
+.settings-field textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.settings-field textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+
+/* =========================================
+   SETTINGS OPTIONS
+========================================= */
+
+.settings-options {
+  width: 100%;
+  border: 1px solid #dfe3e8;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.settings-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 18px 20px;
+  min-height: 65px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.2s ease;
+}
+
+.settings-option:last-child {
+  border-bottom: none;
+}
+
+.settings-option:hover {
+  background: #f8fafc;
+}
+
+.settings-option > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-option strong {
+  display: block;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 650;
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.settings-option p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* =========================================
+   TOGGLE
+========================================= */
+
+.toggle {
+  width: 44px;
+  height: 24px;
+  min-width: 44px;
+  border: none;
+  border-radius: 20px;
+  background: #cbd5e1;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.toggle span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.toggle:hover {
+  background: #94a3b8;
+}
+
+.toggle.on {
+  background: #2563eb;
+}
+
+.toggle.on:hover {
+  background: #1d4ed8;
+}
+
+.toggle.on span {
+  transform: translateX(20px);
+}
+
+
+/* =========================================
+   SECURITY INPUTS
+========================================= */
+
+.settings-field input[type="password"] {
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.save-settings {
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 11px 19px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.18);
+}
+
+.save-settings:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 9px rgba(37, 99, 235, 0.22);
+}
+
+.save-settings:active {
+  transform: translateY(0);
+}
+
+.saved-message {
+  color: #15803d;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 7px 11px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .settings-container {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-sidebar {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding: 7px;
+  }
+
+  .settings-sidebar button {
+    width: auto;
+    min-width: 125px;
+    margin-bottom: 0;
+    justify-content: center;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .settings-content {
+    padding: 18px;
+  }
+
+  .settings-title h2 {
+    font-size: 17px;
+  }
+
+  .settings-title p {
+    font-size: 12px;
+  }
+
+  .settings-option {
+    align-items: flex-start;
+    padding: 16px;
+    gap: 15px;
+  }
+
+  .settings-option strong {
+    font-size: 13px;
+  }
+
+  .settings-option p {
+    font-size: 12px;
+  }
+
+  .settings-footer {
+    align-items: flex-end;
+    flex-direction: column;
+  }
+
+  .save-settings {
+    width: 100%;
+  }
+
+  .saved-message {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+}
+
+/* =========================================
+   PASSWORD MESSAGE
+========================================= */
+
+.password-message {
+  margin-top: 15px;
+  padding: 11px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.password-message.success {
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+}
+
+.password-message.error {
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+}

@@ -1,0 +1,1241 @@
+
+/* =========================================================
+   GLOBAL DARK MODE
+   Works whether dark-mode is placed on <html>, <body>,
+   or a parent .dark-mode element.
+========================================================= */
+
+/* =========================================================
+   MAIN PAGE BACKGROUNDS
+========================================================= */
+
+html.dark-mode,
+body.dark-mode {
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+}
+
+html.dark-mode body,
+body.dark-mode {
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+html.dark-mode .dashboard,
+body.dark-mode .dashboard {
+  background: #0f172a !important;
+  color: #e5e7eb;
+}
+
+html.dark-mode .dashboard-main,
+body.dark-mode .dashboard-main {
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+}
+
+
+/* =========================================================
+   DASHBOARD HEADER
+========================================================= */
+
+html.dark-mode .dashboard-header h1,
+body.dark-mode .dashboard-header h1 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .dashboard-header p,
+body.dark-mode .dashboard-header p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .profile-info strong,
+body.dark-mode .profile-info strong {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .profile-info span,
+body.dark-mode .profile-info span {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   NOTIFICATION HEADER ICON
+========================================================= */
+
+html.dark-mode .notification-icon,
+body.dark-mode .notification-icon {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .notification-icon:hover,
+body.dark-mode .notification-icon:hover {
+  background: #26364d !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .notification-dot,
+body.dark-mode .notification-dot {
+  border-color: #1e293b !important;
+}
+
+
+/* =========================================================
+   DASHBOARD STATUS CARDS
+========================================================= */
+
+html.dark-mode .status-card,
+body.dark-mode .status-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .status-card span,
+body.dark-mode .status-card span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .status-card strong,
+body.dark-mode .status-card strong {
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .status-icon,
+body.dark-mode .status-icon {
+  background: #1e3a5f !important;
+}
+
+
+/* =========================================================
+   DASHBOARD CARDS
+========================================================= */
+
+html.dark-mode .dashboard-card,
+body.dark-mode .dashboard-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .card-header h3,
+body.dark-mode .card-header h3 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .card-header p,
+body.dark-mode .card-header p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .card-header > strong,
+body.dark-mode .card-header > strong {
+  color: #60a5fa !important;
+}
+
+html.dark-mode .progress-bar,
+body.dark-mode .progress-bar {
+  background: #334155 !important;
+}
+
+html.dark-mode .progress-info span,
+body.dark-mode .progress-info span {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   DASHBOARD PROFILE PROGRESS
+========================================================= */
+
+html.dark-mode .circle-progress,
+body.dark-mode .circle-progress {
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .profile-progress strong,
+body.dark-mode .profile-progress strong {
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .profile-progress p,
+body.dark-mode .profile-progress p {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   DASHBOARD ACTIVITY
+========================================================= */
+
+html.dark-mode .dashboard-activity-item,
+body.dark-mode .dashboard-activity-item {
+  border-bottom-color: #334155 !important;
+}
+
+html.dark-mode .dashboard-activity-item:hover,
+body.dark-mode .dashboard-activity-item:hover {
+  background: #263449 !important;
+}
+
+html.dark-mode .dashboard-activity-item.unread,
+body.dark-mode .dashboard-activity-item.unread {
+  background: #172b46 !important;
+}
+
+html.dark-mode .dashboard-activity-icon,
+body.dark-mode .dashboard-activity-icon {
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .dashboard-activity-content strong,
+body.dark-mode .dashboard-activity-content strong {
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .dashboard-activity-content p,
+body.dark-mode .dashboard-activity-content p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .dashboard-activity-content span,
+body.dark-mode .dashboard-activity-content span {
+  color: #64748b !important;
+}
+
+
+/* =========================================================
+   APPLICATION SUMMARY
+========================================================= */
+
+html.dark-mode .dashboard-application-summary > div,
+body.dark-mode .dashboard-application-summary > div {
+  background: #172033 !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .dashboard-application-summary span,
+body.dark-mode .dashboard-application-summary span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .dashboard-application-summary strong,
+body.dark-mode .dashboard-application-summary strong {
+  color: #f1f5f9 !important;
+}
+
+
+/* =========================================================
+   EMPTY ACTIVITY
+========================================================= */
+
+html.dark-mode .empty-activity h4,
+body.dark-mode .empty-activity h4 {
+  color: #e2e8f0 !important;
+}
+
+html.dark-mode .empty-activity p,
+body.dark-mode .empty-activity p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .empty-icon,
+body.dark-mode .empty-icon {
+  color: #64748b !important;
+}
+
+
+/* =========================================================
+   LOGIN SUCCESS MESSAGE
+========================================================= */
+
+html.dark-mode .login-success-message,
+body.dark-mode .login-success-message {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark-mode .login-success-message strong,
+body.dark-mode .login-success-message strong {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .login-success-message p,
+body.dark-mode .login-success-message p {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   APPLICATION PAGE
+========================================================= */
+
+html.dark-mode .application-page,
+body.dark-mode .application-page {
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+}
+
+html.dark-mode .application-header,
+body.dark-mode .application-header {
+  background: #111827 !important;
+  border-bottom-color: #334155 !important;
+}
+
+html.dark-mode .application-logo,
+body.dark-mode .application-logo {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .application-header-right,
+body.dark-mode .application-header-right {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .application-header-right strong,
+body.dark-mode .application-header-right strong {
+  color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   APPLICATION TITLE
+========================================================= */
+
+html.dark-mode .application-title h1,
+body.dark-mode .application-title h1,
+html.dark-mode .application-title h2,
+body.dark-mode .application-title h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .application-title span,
+body.dark-mode .application-title span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .save-exit,
+body.dark-mode .save-exit {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   APPLICATION STEPS
+========================================================= */
+
+html.dark-mode .step-container::before,
+body.dark-mode .step-container::before {
+  background: #334155 !important;
+}
+
+html.dark-mode .step-number,
+body.dark-mode .step-number {
+  background: #334155 !important;
+  border-color: #0f172a !important;
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .step span,
+body.dark-mode .step span {
+  color: #64748b !important;
+}
+
+html.dark-mode .step.active span,
+body.dark-mode .step.active span {
+  color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   APPLICATION CARD
+========================================================= */
+
+html.dark-mode .application-card,
+body.dark-mode .application-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .form-section-header h2,
+body.dark-mode .form-section-header h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .form-section-header p,
+body.dark-mode .form-section-header p {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   APPLICATION FORM
+========================================================= */
+
+html.dark-mode .application-field label,
+body.dark-mode .application-field label {
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .application-field input,
+body.dark-mode .application-field input,
+html.dark-mode .application-field select,
+body.dark-mode .application-field select,
+html.dark-mode .application-field textarea,
+body.dark-mode .application-field textarea {
+  background: #111827 !important;
+  border-color: #475569 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .application-field input::placeholder,
+body.dark-mode .application-field input::placeholder,
+html.dark-mode .application-field textarea::placeholder,
+body.dark-mode .application-field textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.dark-mode .application-field input:focus,
+body.dark-mode .application-field input:focus,
+html.dark-mode .application-field select:focus,
+body.dark-mode .application-field select:focus,
+html.dark-mode .application-field textarea:focus,
+body.dark-mode .application-field textarea:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+}
+
+
+/* =========================================================
+   UPLOAD BOX
+========================================================= */
+
+html.dark-mode .upload-box,
+body.dark-mode .upload-box {
+  background: #172033 !important;
+  border-color: #475569 !important;
+}
+
+html.dark-mode .upload-box h3,
+body.dark-mode .upload-box h3 {
+  color: #e2e8f0 !important;
+}
+
+html.dark-mode .upload-box p,
+body.dark-mode .upload-box p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .upload-btn,
+body.dark-mode .upload-btn {
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   REVIEW
+========================================================= */
+
+html.dark-mode .review-group,
+body.dark-mode .review-group {
+  background: #172033 !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .review-heading,
+body.dark-mode .review-heading {
+  border-bottom-color: #334155 !important;
+}
+
+html.dark-mode .review-heading h3,
+body.dark-mode .review-heading h3 {
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .review-details p,
+body.dark-mode .review-details p {
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .review-details span,
+body.dark-mode .review-details span {
+  color: #64748b !important;
+}
+
+html.dark-mode .submission-warning,
+body.dark-mode .submission-warning {
+  background: #332b16 !important;
+  border-color: #66531c !important;
+}
+
+html.dark-mode .submission-warning strong,
+body.dark-mode .submission-warning strong,
+html.dark-mode .submission-warning p,
+body.dark-mode .submission-warning p {
+  color: #fbbf24 !important;
+}
+
+
+/* =========================================================
+   APPLICATION NAVIGATION
+========================================================= */
+
+html.dark-mode .application-navigation,
+body.dark-mode .application-navigation {
+  border-top-color: #334155 !important;
+}
+
+html.dark-mode .previous-btn,
+body.dark-mode .previous-btn,
+html.dark-mode .cancel-btn,
+body.dark-mode .cancel-btn {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   APPLICATION STATUS
+========================================================= */
+
+html.dark-mode .application-status-card,
+body.dark-mode .application-status-card,
+html.dark-mode .status-content-card,
+body.dark-mode .status-content-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .status-card-heading h2,
+body.dark-mode .status-card-heading h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .status-card-heading p,
+body.dark-mode .status-card-heading p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .status-badge,
+body.dark-mode .status-badge {
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .application-info,
+body.dark-mode .application-info {
+  border-top-color: #334155 !important;
+}
+
+html.dark-mode .application-info-item span,
+body.dark-mode .application-info-item span,
+html.dark-mode .application-detail span,
+body.dark-mode .application-detail span {
+  color: #64748b !important;
+}
+
+html.dark-mode .application-info-item strong,
+body.dark-mode .application-info-item strong,
+html.dark-mode .application-detail strong,
+body.dark-mode .application-detail strong {
+  color: #e2e8f0 !important;
+}
+
+
+/* =========================================================
+   STATUS PROGRESS
+========================================================= */
+
+html.dark-mode .status-progress-line,
+body.dark-mode .status-progress-line {
+  background: #334155 !important;
+}
+
+html.dark-mode .status-step-circle,
+body.dark-mode .status-step-circle {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #64748b !important;
+}
+
+html.dark-mode .status-step.current .status-step-circle,
+body.dark-mode .status-step.current .status-step-circle {
+  background: #1e3a5f !important;
+  border-color: #3b82f6 !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .status-step strong,
+body.dark-mode .status-step strong {
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .status-step span,
+body.dark-mode .status-step span {
+  color: #64748b !important;
+}
+
+
+/* =========================================================
+   APPLICATION DETAILS
+========================================================= */
+
+html.dark-mode .application-detail,
+body.dark-mode .application-detail {
+  background: #172033 !important;
+  border-color: #334155 !important;
+}
+
+
+/* =========================================================
+   MOTIVATION
+========================================================= */
+
+html.dark-mode .application-motivation,
+body.dark-mode .application-motivation {
+  border-top-color: #334155 !important;
+}
+
+html.dark-mode .application-motivation > span,
+body.dark-mode .application-motivation > span {
+  color: #64748b !important;
+}
+
+html.dark-mode .application-motivation p,
+body.dark-mode .application-motivation p {
+  background: #172033 !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   DOCUMENTS
+========================================================= */
+
+html.dark-mode .document-item,
+body.dark-mode .document-item {
+  background: #172033 !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .document-details strong,
+body.dark-mode .document-details strong {
+  color: #e2e8f0 !important;
+}
+
+html.dark-mode .document-details span,
+body.dark-mode .document-details span {
+  color: #64748b !important;
+}
+
+html.dark-mode .document-view-btn,
+body.dark-mode .document-view-btn {
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+html.dark-mode .history-item:not(:last-child)::after,
+body.dark-mode .history-item:not(:last-child)::after {
+  background: #334155 !important;
+}
+
+html.dark-mode .history-icon,
+body.dark-mode .history-icon {
+  background: #334155 !important;
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .history-text strong,
+body.dark-mode .history-text strong {
+  color: #e2e8f0 !important;
+}
+
+html.dark-mode .history-text p,
+body.dark-mode .history-text p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .history-text span,
+body.dark-mode .history-text span {
+  color: #64748b !important;
+}
+
+
+/* =========================================================
+   ADMIN NOTE
+========================================================= */
+
+html.dark-mode .admin-note,
+body.dark-mode .admin-note {
+  background: #172d4a !important;
+  border-color: #1e4b78 !important;
+}
+
+html.dark-mode .admin-note strong,
+body.dark-mode .admin-note strong {
+  color: #93c5fd !important;
+}
+
+html.dark-mode .admin-note p,
+body.dark-mode .admin-note p {
+  color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   EMPTY APPLICATION
+========================================================= */
+
+html.dark-mode .application-empty,
+body.dark-mode .application-empty {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .application-empty h2,
+body.dark-mode .application-empty h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .application-empty p,
+body.dark-mode .application-empty p {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+html.dark-mode .application-loading h2,
+body.dark-mode .application-loading h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .application-loading p,
+body.dark-mode .application-loading p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .loading-spinner,
+body.dark-mode .loading-spinner {
+  border-color: #334155 !important;
+  border-top-color: #3b82f6 !important;
+}
+
+
+/* =========================================================
+   NOTIFICATIONS PAGE
+========================================================= */
+
+html.dark-mode .notifications-page,
+body.dark-mode .notifications-page {
+  color: #e5e7eb;
+}
+
+html.dark-mode .notifications-heading h2,
+body.dark-mode .notifications-heading h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .notifications-heading p,
+body.dark-mode .notifications-heading p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .notifications-label,
+body.dark-mode .notifications-label {
+  color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   MARK ALL BUTTON
+========================================================= */
+
+html.dark-mode .mark-all-btn,
+body.dark-mode .mark-all-btn {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .mark-all-btn:hover,
+body.dark-mode .mark-all-btn:hover {
+  background: #26364d !important;
+  border-color: #3b82f6 !important;
+}
+
+
+/* =========================================================
+   NOTIFICATION ERROR
+========================================================= */
+
+html.dark-mode .notifications-error,
+body.dark-mode .notifications-error {
+  background: #3b1d24 !important;
+  border-color: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+
+
+/* =========================================================
+   NOTIFICATION ITEMS
+========================================================= */
+
+html.dark-mode .notification-item,
+body.dark-mode .notification-item {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .notification-item:hover,
+body.dark-mode .notification-item:hover {
+  background: #263449 !important;
+  border-color: #3b82f6 !important;
+}
+
+html.dark-mode .notification-item.unread,
+body.dark-mode .notification-item.unread {
+  background: #172b46 !important;
+  border-color: #1e4b78 !important;
+}
+
+html.dark-mode .notification-item.unread:hover,
+body.dark-mode .notification-item.unread:hover {
+  background: #1b3555 !important;
+}
+
+
+/* =========================================================
+   NOTIFICATION CONTENT
+========================================================= */
+
+html.dark-mode .notification-top h3,
+body.dark-mode .notification-top h3 {
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .notification-content > p,
+body.dark-mode .notification-content > p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .notification-time,
+body.dark-mode .notification-time {
+  color: #64748b !important;
+}
+
+
+/* =========================================================
+   NOTIFICATION ICONS
+========================================================= */
+
+html.dark-mode .notification-item-icon.application,
+body.dark-mode .notification-item-icon.application {
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .notification-item-icon.success,
+body.dark-mode .notification-item-icon.success {
+  background: #143524 !important;
+  color: #4ade80 !important;
+}
+
+html.dark-mode .notification-item-icon.warning,
+body.dark-mode .notification-item-icon.warning {
+  background: #3b2d13 !important;
+  color: #fbbf24 !important;
+}
+
+html.dark-mode .notification-item-icon.error,
+body.dark-mode .notification-item-icon.error {
+  background: #3b1d24 !important;
+  color: #f87171 !important;
+}
+
+html.dark-mode .notification-item-icon.info,
+body.dark-mode .notification-item-icon.info {
+  background: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .notification-item-icon.announcement,
+body.dark-mode .notification-item-icon.announcement {
+  background: #302454 !important;
+  color: #c4b5fd !important;
+}
+
+
+/* =========================================================
+   NOTIFICATIONS EMPTY
+========================================================= */
+
+html.dark-mode .notifications-empty,
+body.dark-mode .notifications-empty {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .notifications-empty h3,
+body.dark-mode .notifications-empty h3 {
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .notifications-empty p,
+body.dark-mode .notifications-empty p {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .empty-notification-icon,
+body.dark-mode .empty-notification-icon {
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   PROFILE PAGE
+========================================================= */
+
+html.dark-mode .profile-overview,
+body.dark-mode .profile-overview,
+html.dark-mode .profile-card,
+body.dark-mode .profile-card,
+html.dark-mode .profile-edit-form,
+body.dark-mode .profile-edit-form {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+html.dark-mode .profile-overview-info h2,
+body.dark-mode .profile-overview-info h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .profile-overview-info p,
+body.dark-mode .profile-overview-info p {
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .profile-overview-info span,
+body.dark-mode .profile-overview-info span {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   PROFILE PHOTO BUTTON
+========================================================= */
+
+html.dark-mode .profile-photo-btn,
+body.dark-mode .profile-photo-btn {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .profile-photo-btn:hover,
+body.dark-mode .profile-photo-btn:hover {
+  background: #263449 !important;
+}
+
+
+/* =========================================================
+   PROFILE COMPLETION
+========================================================= */
+
+html.dark-mode .profile-completion,
+body.dark-mode .profile-completion {
+  background: #172d4a !important;
+  border-color: #1e4b78 !important;
+}
+
+html.dark-mode .completion-info h3,
+body.dark-mode .completion-info h3 {
+  color: #bfdbfe !important;
+}
+
+html.dark-mode .completion-info p,
+body.dark-mode .completion-info p,
+html.dark-mode .completion-message,
+body.dark-mode .completion-message {
+  color: #60a5fa !important;
+}
+
+html.dark-mode .completion-info strong,
+body.dark-mode .completion-info strong {
+  color: #93c5fd !important;
+}
+
+html.dark-mode .completion-bar,
+body.dark-mode .completion-bar {
+  background: #1e3a5f !important;
+}
+
+
+/* =========================================================
+   PROFILE CARD HEADERS
+========================================================= */
+
+html.dark-mode .profile-card-header,
+body.dark-mode .profile-card-header {
+  border-bottom-color: #334155 !important;
+}
+
+html.dark-mode .profile-card-header h2,
+body.dark-mode .profile-card-header h2 {
+  color: #f8fafc !important;
+}
+
+html.dark-mode .profile-card-header p,
+body.dark-mode .profile-card-header p {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   PROFILE DETAILS
+========================================================= */
+
+html.dark-mode .profile-detail span,
+body.dark-mode .profile-detail span {
+  color: #94a3b8 !important;
+}
+
+html.dark-mode .profile-detail strong,
+body.dark-mode .profile-detail strong {
+  color: #e2e8f0 !important;
+}
+
+
+/* =========================================================
+   EDIT PROFILE BUTTON
+========================================================= */
+
+html.dark-mode .edit-profile-btn,
+body.dark-mode .edit-profile-btn {
+  background: #1e3a5f !important;
+  border-color: #1e4b78 !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .edit-profile-btn:hover,
+body.dark-mode .edit-profile-btn:hover {
+  background: #24466e !important;
+}
+
+
+/* =========================================================
+   PROFILE EDIT FORM
+========================================================= */
+
+html.dark-mode .edit-form-group label,
+body.dark-mode .edit-form-group label,
+html.dark-mode .edit-field label,
+body.dark-mode .edit-field label {
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .edit-form-group input,
+body.dark-mode .edit-form-group input,
+html.dark-mode .edit-form-group select,
+body.dark-mode .edit-form-group select,
+html.dark-mode .edit-form-group textarea,
+body.dark-mode .edit-form-group textarea,
+html.dark-mode .edit-field input,
+body.dark-mode .edit-field input,
+html.dark-mode .edit-field select,
+body.dark-mode .edit-field select,
+html.dark-mode .edit-field textarea,
+body.dark-mode .edit-field textarea {
+  background: #111827 !important;
+  border-color: #475569 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .edit-form-group input::placeholder,
+body.dark-mode .edit-form-group input::placeholder,
+html.dark-mode .edit-form-group textarea::placeholder,
+body.dark-mode .edit-form-group textarea::placeholder,
+html.dark-mode .edit-field input::placeholder,
+body.dark-mode .edit-field input::placeholder,
+html.dark-mode .edit-field textarea::placeholder,
+body.dark-mode .edit-field textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.dark-mode .edit-form-group input:disabled,
+body.dark-mode .edit-form-group input:disabled,
+html.dark-mode .edit-field input:disabled,
+body.dark-mode .edit-field input:disabled {
+  background: #0f172a !important;
+  color: #64748b !important;
+}
+
+
+/* =========================================================
+   PROFILE FORM ACTIONS
+========================================================= */
+
+html.dark-mode .edit-form-actions,
+body.dark-mode .edit-form-actions {
+  border-top-color: #334155 !important;
+}
+
+html.dark-mode .cancel-edit-btn,
+body.dark-mode .cancel-edit-btn {
+  background: #1e293b !important;
+  border-color: #475569 !important;
+  color: #cbd5e1 !important;
+}
+
+html.dark-mode .cancel-edit-btn:hover,
+body.dark-mode .cancel-edit-btn:hover {
+  background: #263449 !important;
+}
+
+
+/* =========================================================
+   PROFILE SUCCESS / ERROR
+========================================================= */
+
+html.dark-mode .profile-success-message,
+body.dark-mode .profile-success-message,
+html.dark-mode .profile-success,
+body.dark-mode .profile-success {
+  background: #143524 !important;
+  border-color: #166534 !important;
+  color: #86efac !important;
+}
+
+html.dark-mode .profile-error-message,
+body.dark-mode .profile-error-message,
+html.dark-mode .profile-error,
+body.dark-mode .profile-error {
+  background: #3b1d24 !important;
+  border-color: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+html.dark-mode .status-badge.pending,
+body.dark-mode .status-badge.pending {
+  background: #3b2d13 !important;
+  color: #fbbf24 !important;
+}
+
+html.dark-mode .status-badge.review,
+body.dark-mode .status-badge.review {
+  background: #1e3a5f !important;
+  color: #60a5fa !important;
+}
+
+html.dark-mode .status-badge.approved,
+body.dark-mode .status-badge.approved {
+  background: #143524 !important;
+  color: #4ade80 !important;
+}
+
+html.dark-mode .status-badge.rejected,
+body.dark-mode .status-badge.rejected {
+  background: #3b1d24 !important;
+  color: #f87171 !important;
+}
+
+
+/* =========================================================
+   GENERIC DARK-MODE CARD PROTECTION
+   Catches cards that may have been missed by individual
+   page selectors.
+========================================================= */
+
+html.dark-mode .card,
+body.dark-mode .card,
+html.dark-mode .content-card,
+body.dark-mode .content-card,
+html.dark-mode .page-card,
+body.dark-mode .page-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e5e7eb !important;
+}
+
+
+/* =========================================================
+   GENERIC HEADINGS / TEXT INSIDE DARK COMPONENTS
+========================================================= */
+
+html.dark-mode .application-card h1,
+body.dark-mode .application-card h1,
+html.dark-mode .application-card h2,
+body.dark-mode .application-card h2,
+html.dark-mode .application-card h3,
+body.dark-mode .application-card h3,
+html.dark-mode .dashboard-card h1,
+body.dark-mode .dashboard-card h1,
+html.dark-mode .dashboard-card h2,
+body.dark-mode .dashboard-card h2,
+html.dark-mode .dashboard-card h3,
+body.dark-mode .dashboard-card h3 {
+  color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   SELECT DROPDOWNS
+========================================================= */
+
+html.dark-mode select,
+body.dark-mode select {
+  color-scheme: dark;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+html.dark-mode ::-webkit-scrollbar,
+body.dark-mode ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html.dark-mode ::-webkit-scrollbar-track,
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+html.dark-mode ::-webkit-scrollbar-thumb,
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 10px;
+}
+
+html.dark-mode ::-webkit-scrollbar-thumb:hover,
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
