@@ -616,14 +616,14 @@ body.dark-mode .home .feature-card {
 
 .home .department-card h3 {
     margin: 0 0 10px;
-    color: #ffffff;
+    color: #30343b;
     font-size: 18px;
 }
 
 .home .department-card p {
     margin: 0;
     color: #e2e8f0;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.7;
 }
 
