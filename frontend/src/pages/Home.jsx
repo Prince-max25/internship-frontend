@@ -363,7 +363,7 @@ function Home() {
 
         <div className="steps-grid">
           <div className="step-card">
-            <div className="step-number">01</div>
+            
 
             <h3>Create Your Account</h3>
 
@@ -374,7 +374,6 @@ function Home() {
           </div>
 
           <div className="step-card">
-            <div className="step-number">02</div>
 
             <h3>Complete Your Application</h3>
 
@@ -385,7 +384,6 @@ function Home() {
           </div>
 
           <div className="step-card">
-            <div className="step-number">03</div>
 
             <h3>Submit Your Documents</h3>
 
@@ -396,8 +394,6 @@ function Home() {
           </div>
 
           <div className="step-card">
-            <div className="step-number">04</div>
-
             <h3>Track Your Application</h3>
 
             <p>
